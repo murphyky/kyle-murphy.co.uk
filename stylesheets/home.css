@@ -1,0 +1,15 @@
+#main-container {
+	width: 80%;
+}
+
+#title-container {
+	margin-top: 1em;
+}
+
+#title-heading{
+	text-align: center;
+}
+
+#links li{
+	display: inline;
+}
