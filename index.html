@@ -10,14 +10,14 @@
 	<body ng-app="kyle-homepage">
 
 		<div id="header-container" class="col-xs-12">
-			<ul id="links">
+			<ul id="links" class="center-block">
 				<li><a href="#/about">About</a></li>
 				<li><a href="#/external-links">External Links</a></li>
 				<li><a href="#/contact">Contact</a></li>
 			</ul>
 		</div>
 
-		<div class="container-fluid" style=" border: 1px solid" id="main-container">	
+		<div class="container-fluid" id="main-container">	
 			<div class="col-xs-12" id="title-container">
 				<h3 id="title-heading">
 					Kyle's Homepage
@@ -26,29 +26,43 @@
 
 			<div class="col-xs-12" id="about">
 				<p>
-					Hi, I am an Irish web developer living in London. 
+					Hi, I am an Irish web developer living in London. I have worked with and built systems with Angular.js and have experience maintaining complex front-end data-driven applications. 
+				</p>
+				<br>
+				<p>
+					Please excuse the spartan design. The header links above don't take you anywhere (yet). The links below will take you to my linkedin and CV should you want to see them.
+				</p>
+
+			</div>
+
+			<div class="col-xs-12 col-md-5 smaller-container" id="external-links">
+			<p>
+
+			<a class="social-links" href="https://github.com/murphyky"><i class="fa fa-3x fa-github"></i></a>
+
+			<a class="social-links" href="https://uk.linkedin.com/in/kyle-murphy-29919b78">
+				<i class="fa fa-3x fa-linkedin"></i>
+			</a>
+
+			</p>
+
+			</div>
+
+			<div class="col-xs-12 col-md-6 smaller-container pull-right" id="contact">
+				<p>
+				You can email me at kyle-murphy89 (at) live.com
+				<br>
+				View my <a style="text-decoration:underline;" href="/blog/about/cv">CV here</a>
+				<br>
+				<a style="text-decoration:underline;" href="/blog/">I have a blog here</a>, hosted with <a href="https://ghost.org/" style="text-decoration:underline;">Ghost</a>
 				</p>
 			</div>
-
-			<div class="col-xs-12 col-md-6" id="external-links">
-			<i class="fa fa-github"><a href="https://github.com/murphyky"></a></i>
-
-			</div>
-
-			<div class="col-xs-12 col-md-6" id="contact">
-				contact details
-				email (no spam)
-				blog which will never be updated
-				cv
-			</div>
-
-			some shitty DOM manipulation by angular to show some evidence of competence with the framework
 
 		</div>
 
 	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-
+	<script src="js/app.js"></script>
 	</body>
 </html>
