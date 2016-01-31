@@ -23,16 +23,5 @@
 			}
 
 		}])
-	.config(['$routeProvider', function($routeProvider){
-		$routeProvider.when('/', {
-			controller: 'SteamController',
-			reloadOnSearch: false
-		});
-
-		$routeProvider.when('/index.html', {
-			controller: 'SteamController',
-			reloadOnSearch: false
-		})
-	}])
 
 })();
