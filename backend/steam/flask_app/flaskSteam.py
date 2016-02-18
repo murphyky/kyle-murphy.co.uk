@@ -25,11 +25,9 @@ def get_user(user_id):
 			'steamids' : user_id
 		}
 
-		url = url + '?key='+params.key+'steamids='+params.user_id
+		url = url + '?key='+params['key']+'&steamids='+params['steamids']
 
-		resp = make_response(requests.get(url))
-
-		return resp
+		return make_response(requests.get(url).text)
 		
 	except Exception as e:
 		print e
