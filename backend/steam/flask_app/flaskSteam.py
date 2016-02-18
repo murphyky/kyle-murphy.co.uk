@@ -9,23 +9,28 @@ application = Flask(__name__)
 
 @application.route('/')
 def index():
+	print "woo"
 	return 'Hi there on port 5000'
 
-@application.route('/api/get_user/<user_id>')
+@application.route('/api/get_user/<user_id>/')
 def get_user(user_id):
 
 	error = None
 
-	url = steam_api+'ISteamUser/GetPlayerSummaries/v0002/'
+	try:
+		url = steam_api+'ISteamUser/GetPlayerSummaries/v0002/'
 	
-	params = {
-		'key': app.config['STEAM_KEY'],
-		'steamids' : user_id
-	}
+		params = {
+			'key': application.config['STEAM_KEY'],
+			'steamids' : user_id
+		}
 
-	resp = make_response(requests.get(url, params).text)
-	
-	return resp
+		resp = make_response(requests.get(url, params).text)
+
+		return resp
+		
+	except Exception, e:
+		raise e
 
 if __name__ == '__main__':
 	application.config.from_object('config')
