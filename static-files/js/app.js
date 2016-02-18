@@ -11,7 +11,7 @@
 
 					$http({
 						method: 'GET',
-						url: 'http://127.0.0.1:5000/api/get_user/'+$scope.steam_user_id
+						url: 'http://kyle-murphy.co.uk:8000/'
 					}).success(function(user_details) {
 						console.log(user_details)
 						alert(user_details)
