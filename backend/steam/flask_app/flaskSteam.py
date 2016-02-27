@@ -12,7 +12,7 @@ application = Flask(__name__)
 def index():
 	return 'Hi there on port 5000'
 
-@application.route('/api/get_user/<user_id>/')
+@application.route('/get_user/<user_id>/')
 def get_user(user_id):
 
 	error = None

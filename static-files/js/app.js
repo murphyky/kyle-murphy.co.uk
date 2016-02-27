@@ -35,7 +35,7 @@
 
 					$http({
 						method: 'GET',
-						url: 'http://kyle-murphy.co.uk/api/get_user'
+						url: 'http://kyle-murphy.co.uk/get_user'
 					}).success(function(user_details) {
 						console.log(user_details)
 						alert(user_details)
