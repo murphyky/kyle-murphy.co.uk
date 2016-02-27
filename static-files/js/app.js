@@ -5,18 +5,21 @@
 	.config(['$stateProvider', '$urlRouterProvider',
 		function($stateProvider, $urlRouterProvider){
 
-			$stateProvider.$state('index', {
+			$urlRouterProvider.otherwise("/");
+
+			$stateProvider.state('index', {
 				url: "/",
 				name: "index",
 				controller: "MainPageCtrl"
-			}).$state('testing', {
+			}).state('testing', {
 				url: "/",
 				name: "testing",
-				controller: "SteamController"
+				controller: "SteamController",
+				templateUrl: "static-files/views/steam.html"
 			})
 		}])
-	.controller('MainPageCtrl', ['$scope',
-		function($scope) {
+	.controller('MainPageCtrl', ['$scope', '$state',
+		function($scope, $state) {
 
 			if (localStorage["testing"]) {
 				$state.go('testing');

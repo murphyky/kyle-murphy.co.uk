@@ -59,26 +59,14 @@
 				</p>
 			</div>
 
-			<div ng-if="testing">
-				<div ng-controller="SteamController">
-					<input ng-model="steam_user_id" type="text">
-					<a class="btn btn-primary" ng-click="steamUser()">CLICK</a>
-				</div>
-			</div>
-
-		<!--<div class="col-xs-12" ng-controller="SteamController" id="projects">
-				<p>See soon</p>
-
-				<input ng-model="steam_user_id" type="text">
-				<a class="btn btn-primary" ng-click="steamUser()">CLICK</a>
-		</div>-->
+			<ui-view></ui-view>
 
 		</div>
 
 	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-	<script src="node_modules/angular-route/angular-route.min.js"></script>
+	<script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
 	<script src="static-files/js/app.js"></script>
 	</body>
 </html>
