@@ -1,13 +1,30 @@
 (function(){
 	'use strict';
 
-	angular.module('kyle-homepage', ['ngRoute'])
-	.controller('SteamController', ['$scope', '$http', 
-		function($scope, $http) {
+	angular.module('kyle-homepage', ['ui.router'])
+	.config(['$stateProvider', '$urlRouterProvider',
+		function($stateProvider, $urlRouterProvider){
+
+			$stateProvider.$state('index', {
+				url: "/",
+				name: "index",
+				controller: "MainPageCtrl"
+			}).$state('testing', {
+				url: "/",
+				name: "testing",
+				controller: "SteamController"
+			})
+		}])
+	.controller('MainPageCtrl', ['$scope',
+		function($scope) {
 
 			if (localStorage["testing"]) {
-				$scope.testing = true;
+				$state.go('testing');
 			}
+			
+		}])
+	.controller('SteamController', ['$scope', '$http', 
+		function($scope, $http) {
 
 			$scope.steamUser = function() {
 
