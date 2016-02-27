@@ -35,7 +35,7 @@
 
 					$http({
 						method: 'GET',
-						url: 'http://kyle-murphy.co.uk:8000/'
+						url: 'http://kyle-murphy.co.uk:5000/'
 					}).success(function(user_details) {
 						console.log(user_details)
 						alert(user_details)
