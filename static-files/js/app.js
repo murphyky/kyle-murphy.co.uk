@@ -5,6 +5,10 @@
 	.controller('SteamController', ['$scope', '$http', 
 		function($scope, $http) {
 
+			if (localStorage["testing"]) {
+				$scope.testing = true;
+			}
+
 			$scope.steamUser = function() {
 
 				return new Promise(function(resolve, reject){

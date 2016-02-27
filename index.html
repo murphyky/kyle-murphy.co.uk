@@ -59,6 +59,13 @@
 				</p>
 			</div>
 
+			<div ng-if="testing">
+				<div ng-controller="SteamController">
+					<input ng-model="steam_user_id" type="text">
+					<a class="btn btn-primary" ng-click="steamUser()">CLICK</a>
+				</div>
+			</div>
+
 		<!--<div class="col-xs-12" ng-controller="SteamController" id="projects">
 				<p>See soon</p>
 
