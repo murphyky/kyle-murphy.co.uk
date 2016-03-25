@@ -1,7 +1,7 @@
 #from urllib import request, parse
 import requests
 import os
-import uwsgi
+import socket
 
 steam_api = 'http://api.steampowered.com/'
 
@@ -18,11 +18,19 @@ def get_user(user_id):
 	
 	error = None
 	
+	steam_key = None
+
+	if socket.gethostname() == 'kyle-murphy.com':
+		import uwsgi
+		steam_key = uwsgi.opt['steam_key']
+	else:
+		steam_key = application.config['STEAM_KEY']
+
 	try:
 		url = steam_api+'ISteamUser/GetPlayerSummaries/v0002/'
 	
 		params = {
-			'key': uwsgi.opt['steam_key'],
+			'key': steam_key,
 			'steamids' : user_id
 		}
 
