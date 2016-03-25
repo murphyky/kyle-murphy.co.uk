@@ -4,3 +4,7 @@
 			</div>
 
 			{{user_details}}
+
+			<div ng-if="user_details.avatar">
+				<img src="{{user_details.avatar}}"></img>
+			</div>

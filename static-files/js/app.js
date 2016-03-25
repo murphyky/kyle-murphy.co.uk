@@ -37,11 +37,8 @@
 						method: 'GET',
 						url: 'http://kyle-murphy.co.uk/api/get_user/' + $scope.steam_user_id
 					}).success(function(response) {
-						console.warn("response")
-						$scope.user_details = response.players[0];
-
-						console.log(user_details)
-						alert(user_details)
+						console.warn(response)
+						$scope.user_details = response.response.players[0];
 
 					}).error(function(err){
 						console.error(err)
