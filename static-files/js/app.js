@@ -50,6 +50,9 @@
 
 							response.play_history.response.games[game_idx].img_logo_url = 
 								image_url + appid + '/' + img_logo_url + '.jpg';
+
+							response.play_history.response.games[game_idx].link = 
+								'http://steamcommunity.com/app/' + appid;
 						});
 
 						$scope.user_details.play_history = response.play_history.response;
