@@ -26,7 +26,7 @@ def request_generator(endpoint, params):
 
 		url = url[:-1]
 
-		return requests.get(url).text
+		return json.dumps(requests.get(url).text)
 	except Exception as e:
 		print e
 
