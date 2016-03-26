@@ -11,22 +11,19 @@
 				url: "/",
 				name: "index",
 				controller: "MainPageCtrl"
-			}).state('testing', {
-				url: "/",
-				name: "testing",
-				controller: "SteamController",
+			}).state('projects', {
+				url: "/projects",
+				name: "projects",
+				controller: "ProjectController",
 				templateUrl: "static-files/views/steam.html"
 			})
 		}])
 	.controller('MainPageCtrl', ['$scope', '$state',
 		function($scope, $state) {
-
-			if (localStorage["testing"]) {
-				$state.go('testing');
-			}
+			
 			
 		}])
-	.controller('SteamController', ['$scope', '$http', 
+	.controller('ProjectController', ['$scope', '$http', 
 		function($scope, $http) {
 
 			$scope.steamUser = function() {
