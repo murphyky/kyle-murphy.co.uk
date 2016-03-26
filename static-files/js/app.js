@@ -46,10 +46,10 @@
 							var appid = response.play_history.response.games[game_idx].appid;
 
 							response.play_history.response.games[game_idx].img_icon_url = 
-								image_url + appid + '/' + img_icon_url;
+								image_url + appid + '/' + img_icon_url + '.jpg';
 
 							response.play_history.response.games[game_idx].img_logo_url = 
-								image_url + appid + '/' + img_logo_url;
+								image_url + appid + '/' + img_logo_url + '.jpg';
 						});
 
 						$scope.user_details.play_history = response.play_history.response;
