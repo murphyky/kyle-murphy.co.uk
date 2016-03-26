@@ -1,4 +1,4 @@
-<div class="col-xs-12" id="stema_app">
+<div class="col-xs-12" id="steam_app">
 
 	<p>When this is finished it will use the Steam API to generate a badge</p>
 
@@ -7,7 +7,13 @@
 			</div>
 
 			{{user_details}}
+			test
+			<div ng-repeat="game in user_details.play_history.games">
+				<img src="game.img_icon_url"></img>
+				<img src="game.img_logo_url"></img>
+			</div>
 
 			<div ng-if="user_details.avatar">
 				<img src="{{user_details.avatar}}"></img>
 			</div>
+

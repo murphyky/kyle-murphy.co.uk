@@ -20,13 +20,15 @@
 		}])
 	.controller('MainPageCtrl', ['$scope', '$state',
 		function($scope, $state) {
-			
+
 			
 		}])
 	.controller('ProjectController', ['$scope', '$http', 
 		function($scope, $http) {
 
 			$scope.steamUser = function() {
+
+				var image_url = 'http://media.steampowered.com/steamcommunity/public/images/apps/';
 
 				return new Promise(function(resolve, reject){
 
@@ -37,6 +39,18 @@
 						console.warn(response)
 
 						$scope.user_details = {} || response.user_details.response.players[0];
+
+						response.play_history.games.forEach(function(game, game_idx) {
+							var img_icon_url = response.play_history.games[game_idx].img_icon_url;
+							var img_logo_url = response.play_history.games[game_idx].img_logo_url;
+							var appid = response.play_history.games[game_idx].appid;
+
+							response.play_history.games[game_idx].img_icon_url = 
+								image_url + appid + '/' + img_icon_url;
+
+							response.play_history.games[game_idx].img_logo_url = 
+								image_url + appid + '/' + img_logo_url;
+						});
 
 						$scope.user_details.play_history = response.play_history.response;
 
