@@ -40,15 +40,15 @@
 
 						$scope.user_details = {} || response.user_details.response.players[0];
 
-						response.play_history.games.forEach(function(game, game_idx) {
-							var img_icon_url = response.play_history.games[game_idx].img_icon_url;
-							var img_logo_url = response.play_history.games[game_idx].img_logo_url;
-							var appid = response.play_history.games[game_idx].appid;
+						response.play_history.response.games.forEach(function(game, game_idx) {
+							var img_icon_url = response.play_history.response.games[game_idx].img_icon_url;
+							var img_logo_url = response.play_history.response.games[game_idx].img_logo_url;
+							var appid = response.play_history.response.games[game_idx].appid;
 
-							response.play_history.games[game_idx].img_icon_url = 
+							response.play_history.response.games[game_idx].img_icon_url = 
 								image_url + appid + '/' + img_icon_url;
 
-							response.play_history.games[game_idx].img_logo_url = 
+							response.play_history.response.games[game_idx].img_logo_url = 
 								image_url + appid + '/' + img_logo_url;
 						});
 
