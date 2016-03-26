@@ -9,8 +9,8 @@
 			{{user_details}}
 			test
 			<div ng-repeat="game in user_details.play_history.games">
-				<img src="game.img_icon_url"></img>
-				<img src="game.img_logo_url"></img>
+				<img src="{{game.img_icon_url}}"></img>
+				<img src="{{game.img_logo_url}}"></img>
 			</div>
 
 			<div ng-if="user_details.avatar">
