@@ -2,6 +2,7 @@
 import requests
 import os
 import socket
+import json
 
 steam_api = 'http://api.steampowered.com/'
 
@@ -9,38 +10,72 @@ from flask import Flask, request, make_response
 
 application = Flask(__name__)
 
+def request_generator(endpoint, params):
+
+	try:
+		if socket.gethostname() == 'kyle-murphy.com':
+			import uwsgi
+			params['key'] = uwsgi.opt['steam_key']
+		else:
+			params['key'] = application.config['STEAM_KEY']
+
+		url = steam_api + endpoint + '?' #start of query string
+
+		for param in params:
+			url = url + (param + '=' + params[param] + '&')
+
+		url = url[:-1]
+
+		return requests.get(url).text
+	except Exception as e:
+		print e
+
+
 @application.route('/api')
 def index():
-	return 'Hi there on port 5000'
+	return 'API TEST'
 
-@application.route('/api/get_user/<user_id>/')
 def get_user(user_id):
 	
 	error = None
-	
-	steam_key = None
-
-	if socket.gethostname() == 'kyle-murphy.com':
-		import uwsgi
-		steam_key = uwsgi.opt['steam_key']
-	else:
-		steam_key = application.config['STEAM_KEY']
 
 	try:
-		url = steam_api+'ISteamUser/GetPlayerSummaries/v0002/'
-	
-		params = {
-			'key': steam_key,
-			'steamids' : user_id
-		}
-
-		url = url + '?key='+params['key']+'&steamids='+params['steamids']
-
-		return make_response(requests.get(url).text)
+		return request_generator('ISteamUser/GetPlayerSummaries/v0002/', {
+			'steamids': user_id
+			})
 		
 	except Exception as e:
 		print e
-		return make_response(e)
+
+def get_player_history(user_id):
+
+	try:
+
+		return request_generator('IPlayerService/GetRecentlyPlayedGames/v0001/',
+			{
+			'steamid': user_id,
+			'format': 'json'
+			})
+
+	except Exception as e:
+		print e
+
+@application.route('/api/generate_steam_badge/<user_id>/')
+def generate_steam_badge(user_id):
+	try:
+
+		user_response = get_user(user_id)
+		play_history_response = get_player_history(user_id)
+
+		response = json.dumps({
+			'user_details': user_response,
+			'play_history': play_history_response
+		})
+
+		return make_response(response)
+
+	except Exception as e:
+		print e
 
 if __name__ == '__main__':
 	application.config.from_object('config')

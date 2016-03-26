@@ -35,7 +35,7 @@
 
 					$http({
 						method: 'GET',
-						url: 'http://kyle-murphy.co.uk/api/get_user/' + $scope.steam_user_id
+						url: 'http://kyle-murphy.co.uk/api/generate_steam_badge/' + $scope.steam_user_id
 					}).success(function(response) {
 						console.warn(response)
 						$scope.user_details = response.response.players[0];
