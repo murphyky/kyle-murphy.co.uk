@@ -35,10 +35,13 @@
 
 					$http({
 						method: 'GET',
-						url: 'http://kyle-murphy.co.uk/api/generate_steam_badge/' + $scope.steam_user_id
+						url: 'http://127.0.0.1:5000/api/generate_steam_badge/' + $scope.steam_user_id
 					}).success(function(response) {
 						console.warn(response)
-						$scope.user_details = response.response.players[0];
+
+						$scope.user_details = {} || response.user_details.response.players[0];
+
+						$scope.user_details.play_history = response.play_history.response;
 
 					}).error(function(err){
 						console.error(err)
