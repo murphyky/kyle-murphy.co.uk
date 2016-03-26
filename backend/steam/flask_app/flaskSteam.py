@@ -26,7 +26,7 @@ def request_generator(endpoint, params):
 
 		url = url[:-1]
 
-		return json.dumps(requests.get(url).text)
+		return requests.get(url).text
 	except Exception as e:
 		print e
 
@@ -64,8 +64,8 @@ def get_player_history(user_id):
 def generate_steam_badge(user_id):
 	try:
 
-		user_response = get_user(user_id)
-		play_history_response = get_player_history(user_id)
+		user_response = json.dumps(get_user(user_id))
+		play_history_response = json.dumps(get_player_history(user_id))
 
 		response = json.dumps({
 			'user_details': user_response,
