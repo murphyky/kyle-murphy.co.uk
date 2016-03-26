@@ -6,7 +6,7 @@ import json
 
 steam_api = 'http://api.steampowered.com/'
 
-from flask import Flask, request, make_response
+from flask import Flask, request, make_response, jsonify
 
 application = Flask(__name__)
 
@@ -64,15 +64,15 @@ def get_player_history(user_id):
 def generate_steam_badge(user_id):
 	try:
 
-		user_response = json.dumps(get_user(user_id))
-		play_history_response = json.dumps(get_player_history(user_id))
+		user_response = get_user(user_id)
+		play_history_response = get_player_history(user_id)
 
-		response = json.dumps({
-			'user_details': user_response,
-			'play_history': play_history_response
-		})
+		response = {
+			'user_details': json.loads(user_response),
+			'play_history': json.loads(play_history_response)
+		}
 
-		return make_response(response)
+		return jsonify(**response)
 
 	except Exception as e:
 		print e
