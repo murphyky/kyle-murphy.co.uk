@@ -1,18 +1,49 @@
-<div class="col-xs-12" id="steam_app">
 
-	<p>When this is finished it will use the Steam API to generate a badge. Enter your steam id (a long string of digits like 76561197996470719) to call a list of images of your most recently played games</p>
+<div ng-cloak layout-gt-sm="row" layout="column">
+	<div flex-gt-sm="50" flex>
 
-		<input ng-model="steam_user_id" type="text">
-		<a class="btn btn-primary" ng-click="steamUser()">CLICK</a>
+		<md-content>
 
-	<div ng-repeat="game in user_details.play_history.games">
-		<!--<img src="{{game.img_icon_url}}"></img>-->
-		<div class="col-xs-3"><a href="{{game.link}}"><img src="{{game.img_logo_url}}"></img></a>
+
+		<md-list flex>
+
+			<md-input-container layout="row">
+			<div flex="33">
+				<label>Enter Steam ID and click button</label>
+				<input ng-model="steam_user_id" type="text">
+				</div>
+				<md-button class="md-primary" ng-click="steamUser()">Click</a>
+
+			</md-input-container>
+
+		<md-list-item class="md-3-line md-long-text" >	
+			<div id="profile-avatar">
+				<img ng-src="{{user_details.avatarmedium}}"/>
+			</div>
+			<div class="md-list-item-text" id="profile-text" layout="column">
+			<h3>{{ user_details.personaname }}</h3>
+			<p> {{user_details.personastate}}</p>
+			<h4 ng-show="user_details.gameextrainfo"> Currently in-game: {{user_details.gameextrainfo}}</h4>
+			<p><a href="{{user_details.profileurl}}">Visit steam profile</a></p>
+			</div>
+
+		</md-list-item>
+		<md-divider></md-divider>
+		<md-subheader>
+			Played history
+		</md-subheader>
+		<div layout="row" layout-sm="column" id="played_list" layout-wrap>
+		<md-list-item class="md-3-line" flex-md="33" flex-sm="50" flex="33" flex-xs="100" ng-repeat="game in user_details.play_history.games">
+			<img ng-src="{{game.img_icon_url}}" class="md-avatar"/>
+			<div class="md-list-item-text" layout="column">
+				<h3>{{ game.name }}</h3>
+	            <h4>{{ game.playtime_2weeks }}</h4>
+	            <p><a href="{{game.link}}">Visit steam page</a></p>
+			</div>
+		</md-list-item>			
 		</div>
+		</md-list>
+
+		</md-content>
 	</div>
-
-		<div ng-if="user_details.avatar">
-			<img src="{{user_details.avatar}}"></img>
-		</div>
 </div>
-

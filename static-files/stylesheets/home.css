@@ -1,21 +1,10 @@
-#main-container {
-	position: relative;
-	width: 80%;
-	height: 100vh;
-	background: antiquewhite;
-}
-
-#main-container p {
-	width: 85%;
-	margin: 0 auto 0;
-	display: inline;
-}
-
 #header-container {
 	margin-left: 5.1em;
 	z-index: 1
 }
-
+.main-container > md-content{
+	overflow-y:hidden;
+}
 #about {
 	padding-top: 30px;
 	padding-bottom: 30px;
@@ -33,6 +22,9 @@ a:hover, a:active, a:focus{
 	margin-bottom: 2em;
 }
 
+#played_list > md-list-item{
+	overflow-x:hidden;
+}
 .smaller-container p{
 	text-align: center;
 	padding-top: 1em;
@@ -71,15 +63,17 @@ a:hover, a:active, a:focus{
 .social-links {
 	padding: 50px;
 }
-
-@media (max-width: 768px){
-	#header-container {
-		margin-left: 2em;
-	}
+#profile-text {
+	box-sizing:content-box;
+	padding: .5rem;
+	margin-left: 4em;
 }
 
-@media (max-width: 550px){
-	#header-container {
-		display: none;
-	}
+#profile-avatar {
+	top: 15px;
+	position:relative;
+}
+
+#profile-avatar > img {
+	position:absolute;
 }
